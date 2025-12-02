@@ -1,4 +1,4 @@
-# Bonjour, Mamadou DIALLO – Data Analyst & Data Engineer
+# Data Analyst & Data Engineer
 
 Passionné par la donnée, j’aide les organisations à collecter, transformer, analyser et valoriser leurs informations pour une meilleure prise de décision.
 J’ai travaillé sur des projets en business intelligence, machine learning et data science, data engineering, visualisation, automatisation et analyse spatiale (SIG).
