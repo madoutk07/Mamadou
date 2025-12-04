@@ -12,7 +12,16 @@ J’ai travaillé sur des projets en business intelligence, machine learning et 
 * Compétences avancées en géodonnées : Google Earth Engine, R (sf, raster), QGIS
 * Expérience en machine learning : fraude bancaire, classification, clustering
 * Conception de workflows data, dashboards opérationnels et automatisation
-* Expériences variées : Handicap International, APIM, VAEG JURIDICA, LM ECO Production, Ministère de la Transition Numérique (Mauritanie)
+
+## Expériences variées
+
+* Handicap International – Data Analyst & BI/SIG
+* Agence pour la Promotion des Investissements en Mauritanie (APIM) – Data Marketing & Analyse des agréments
+* VAEG JURIDICA - Développeur Full Stack
+* LM ECO Production - Opérateur de Production IT
+* Ministère de la Transition Numérique (Mauritanie) 
+
+
 ---
 
 # Portfolio – Mes projets
@@ -207,7 +216,6 @@ Lien du projet : bientôt disponible
 
 ---
 
----
 
 # Compétences techniques
 
@@ -237,20 +245,10 @@ PostgreSQL, MySQL, DuckDB, BigQuery
 
 ---
 
-# Expériences
-
-* 2024–2025 : Handicap International – Data Analyst & BI/SIG
-* 2024 : Handicap International – Mission Data
-* 2023 : APIM – Data Marketing & Analyse des agréments
-* 2023 : Développeur Full Stack
-* 2022 : IT Production
-
----
-
 # Me contacter
 
-Email : *ajouter votre email*
-LinkedIn : *ajouter votre lien*
-Portfolio : *moi-meme.github.io*
+* Email : mdiallo7@outlook.fr
+* LinkedIn : *[*Mamadou Alioune Diallo*](www.linkedin.com/in/mamadou-alioune-diallo-7a9695259)*
+* Portfolio : [*Mamadou.github.io*](https://madoutk07.github.io/Mamadou/)
 
 
