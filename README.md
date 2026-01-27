@@ -248,7 +248,7 @@ PostgreSQL, MySQL, DuckDB, BigQuery
 # Me contacter
 
 * Email : mdiallo7@outlook.fr
-* LinkedIn : [*Mamadou Alioune Diallo*](www.linkedin.com/in/mamadou-alioune-diallo-7a9695259?)
+* LinkedIn : [*Mamadou Alioune Diallo*]([https://www.linkedin.com/in/mamadou-alioune-diallo-7a9695259/])
 * Portfolio : [*Mamadou.github.io*](https://madoutk07.github.io/Mamadou/)
 
 
