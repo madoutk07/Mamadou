@@ -76,7 +76,7 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .xp-org{font-size:12px;color:var(--accent);font-weight:500}
 .xp-detail{font-size:12.5px;color:var(--ink3);margin-top:5px;line-height:1.6}
 
-.aero-banner{background:var(--accent);color:#fff;padding:3.5rem;border-radius:4px;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:0}
+.aero-banner{background:var(--accent);color:#fff;padding:3.5rem;border-radius:4px;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
 .aero-banner h3{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;line-height:1.2;margin-bottom:1rem}
 .aero-banner p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.85}
 .aero-banner strong{color:#fff}
@@ -95,21 +95,43 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .tag.b{background:var(--accent-light);color:var(--accent);border-color:rgba(26,58,92,.15)}
 .tag.g{background:#fdf5e6;color:#7a5510;border-color:rgba(200,146,42,.2)}
 
-.proj-list{display:flex;flex-direction:column;gap:1.25rem}
-.proj-row{background:var(--surface);border:1px solid var(--border);border-radius:3px;display:grid;grid-template-columns:64px 1fr auto;gap:1.75rem;padding:1.75rem;align-items:start;transition:border-color .2s,transform .2s}
-.proj-row:hover{border-color:var(--accent);transform:translateX(3px)}
-.proj-row.feat{border-left:3px solid var(--accent2)}
-.pnum{font-family:var(--font-serif);font-size:2.2rem;font-weight:700;color:var(--border2);line-height:1}
-.ptitle{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
-.pdesc{font-size:13.5px;color:var(--ink2);line-height:1.75;margin-bottom:.9rem}
-.ptags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.75rem}
+/* PROJETS — grille cartes avec zones images */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.proj-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s}
+.proj-card:hover{border-color:var(--border2);box-shadow:0 6px 30px rgba(0,0,0,.07)}
+.proj-card.feat{border-top:3px solid var(--accent2)}
+.proj-card.feat-aero{border-top:3px solid var(--accent)}
+
+.proj-img-wrap{position:relative;width:100%;aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+.proj-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.proj-card:hover .proj-img-wrap img{transform:scale(1.03)}
+.proj-img-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;
+  border-bottom:1px dashed var(--border2);
+  background:repeating-linear-gradient(45deg,var(--surface2) 0,var(--surface2) 10px,var(--bg) 10px,var(--bg) 20px);
+}
+.proj-img-placeholder svg{width:26px;height:26px;stroke:var(--border2);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.proj-img-placeholder span{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--border2)}
+
+.proj-body{padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
+.proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.pnum{font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--border2);line-height:1;flex-shrink:0}
+.ptitle{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:var(--ink);line-height:1.25}
+.pdesc{font-size:13px;color:var(--ink2);line-height:1.75}
+.ptags{display:flex;flex-wrap:wrap;gap:5px}
 .ptag{font-size:11px;padding:2px 8px;background:var(--surface2);color:var(--ink3);border-radius:2px;border:1px solid var(--border)}
-.plink{font-size:12px;font-weight:500;color:var(--accent);text-decoration:none;letter-spacing:.02em;display:inline-flex;align-items:center;gap:5px;transition:gap .2s}
-.plink:hover{gap:9px}
-.pmets{display:flex;flex-direction:column;gap:.9rem;align-items:flex-end}
-.mval{font-family:var(--font-serif);font-size:1.4rem;font-weight:700;color:var(--accent);line-height:1}
+
+.proj-metrics{display:flex;gap:1.5rem;padding:.9rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.mval{font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--accent);line-height:1}
 .mkey{font-size:10px;color:var(--ink3);margin-top:2px}
-.badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-bottom:.5rem}
+
+.proj-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.75rem;border-top:1px solid var(--border)}
+.plink{font-size:12px;font-weight:500;color:var(--ink3);text-decoration:none;letter-spacing:.02em;display:inline-flex;align-items:center;gap:5px}
+.plink.live{color:var(--accent);transition:gap .2s}
+.plink.live:hover{gap:9px}
+
+.badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
 .b-wip{background:#fef3cd;color:#7a5210;border:1px solid rgba(200,146,42,.2)}
 .b-aero{background:var(--accent-light);color:var(--accent);border:1px solid rgba(26,58,92,.18)}
 
@@ -123,14 +145,6 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .ci-ico svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ci-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);font-weight:600}
 .ci-v{font-size:13px;font-weight:500;color:var(--ink)}
-.cert-box{background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:1.25rem;margin-top:1.5rem}
-.cert-lbl{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:.65rem}
-.cert-i{font-size:13px;font-weight:500;color:var(--ink);padding:.35rem 0;border-bottom:1px solid var(--border)}
-.cert-i:last-child{border-bottom:none;padding-bottom:0}
-.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1.25rem}
-.lang-pill{background:var(--surface2);border:1px solid var(--border);border-radius:2px;padding:.45rem .85rem}
-.lang-n{font-weight:600;font-size:12.5px;color:var(--ink)}
-.lang-l{color:var(--ink3);font-size:11px}
 
 footer{background:var(--accent);color:rgba(255,255,255,.55);text-align:center;padding:1.75rem 4rem;font-size:12px;letter-spacing:.03em}
 footer span{color:rgba(255,255,255,.9);font-weight:500}
@@ -183,7 +197,7 @@ footer span{color:rgba(255,255,255,.9);font-weight:500}
       <div class="kpi-div"></div>
       <div>
         <div class="kpi-val">6M<span>+</span></div>
-        <div class="kpi-desc">Lignes Traitées — projet ML détection de fraude</div>
+        <div class="kpi-desc">Lignes traitées — projet ML détection de fraude</div>
       </div>
     </div>
     <div class="avail"><div class="dot"></div>Disponible · Ouvert aux opportunités</div>
@@ -333,70 +347,131 @@ footer span{color:rgba(255,255,255,.9);font-weight:500}
 <div class="wrapper" id="projects">
   <div class="s-eye">Projets</div>
   <div class="s-title">Réalisations & travaux</div>
-  <div class="proj-list">
+  <div class="proj-grid">
 
-    <div class="proj-row feat">
-      <div class="pnum">01</div>
-      <div>
-        <span class="badge b-wip">En cours</span>
+    <!-- PROJET 01 -->
+    <div class="proj-card feat">
+      <!--
+        📌 ZONE IMAGE 01
+        Remplacez le bloc <div class="proj-img-placeholder">...</div>
+        par : <img src="assets/images/projet-fraude.png" alt="Aperçu projet fraude">
+      -->
+      <div class="proj-img-wrap">
+        <div class="proj-img-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Insérer une image ici</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <div><span class="badge b-wip">En cours</span></div>
+          <div class="pnum">01</div>
+        </div>
         <h3 class="ptitle">Détection de Fraude Bancaire — ML sur 6M+ transactions</h3>
         <p class="pdesc">Pipeline ML complet sur un dataset fortement déséquilibré (&lt;1% de fraudes). Feature engineering, rééquilibrage SMOTE + Tomek Links, comparaison XGBoost / Random Forest / SVM, optimisation du seuil de décision pour maximiser le F1 sans exploser les faux positifs.</p>
+        <div class="proj-metrics">
+          <div><div class="mval">6M+</div><div class="mkey">transactions</div></div>
+          <div><div class="mval">&lt;1%</div><div class="mkey">taux fraude</div></div>
+          <div><div class="mval">F1↑</div><div class="mkey">objectif clé</div></div>
+        </div>
         <div class="ptags">
           <span class="ptag">Python</span><span class="ptag">XGBoost</span><span class="ptag">SMOTE</span>
           <span class="ptag">Tomek Links</span><span class="ptag">GridSearchCV</span><span class="ptag">scikit-learn</span>
         </div>
-        <a href="#" class="plink">GitHub (bientôt disponible) →</a>
-      </div>
-      <div class="pmets">
-        <div><div class="mval">6M+</div><div class="mkey">transactions</div></div>
-        <div><div class="mval">&lt;1%</div><div class="mkey">taux fraude</div></div>
-        <div><div class="mval">F1↑</div><div class="mkey">objectif clé</div></div>
+        <div class="proj-footer">
+          <a href="#" class="plink">GitHub (bientôt disponible) →</a>
+        </div>
       </div>
     </div>
 
-    <div class="proj-row">
-      <div class="pnum">02</div>
-      <div>
-        <span class="badge b-wip">En cours</span>
+    <!-- PROJET 02 -->
+    <div class="proj-card">
+      <!--
+        📌 ZONE IMAGE 02
+        Remplacez le bloc <div class="proj-img-placeholder">...</div>
+        par : <img src="assets/images/projet-datalake.png" alt="Aperçu Data Lake">
+      -->
+      <div class="proj-img-wrap">
+        <div class="proj-img-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Insérer une image ici</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <div><span class="badge b-wip">En cours</span></div>
+          <div class="pnum">02</div>
+        </div>
         <h3 class="ptitle">Data Lake & Analyse du marché de l'emploi IT</h3>
         <p class="pdesc">Architecture Data Lake Landing → Curated → Production pour analyser les offres Glassdoor/LinkedIn. Modèle en étoile, pipeline ETL Python, dashboard Power BI interactif sur les tendances et compétences recherchées.</p>
         <div class="ptags">
           <span class="ptag">Python</span><span class="ptag">BeautifulSoup</span>
           <span class="ptag">ETL</span><span class="ptag">Modèle en étoile</span><span class="ptag">Power BI</span>
         </div>
-        <a href="#" class="plink">GitHub (bientôt disponible) →</a>
+        <div class="proj-footer">
+          <a href="#" class="plink">GitHub (bientôt disponible) →</a>
+        </div>
       </div>
-      <div></div>
     </div>
 
-    <div class="proj-row feat">
-      <div class="pnum">03</div>
-      <div>
-        <span class="badge b-aero">Aéronautique</span>
+    <!-- PROJET 03 -->
+    <div class="proj-card feat-aero">
+      <!--
+        📌 ZONE IMAGE 03
+        Remplacez le bloc <div class="proj-img-placeholder">...</div>
+        par : <img src="assets/images/projet-bi-aero.png" alt="Aperçu BI Aéronautique">
+      -->
+      <div class="proj-img-wrap">
+        <div class="proj-img-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Insérer une image ici</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <div><span class="badge b-aero">Aéronautique</span></div>
+          <div class="pnum">03</div>
+        </div>
         <h3 class="ptitle">BI Supply Chain — Composants électriques d'avions</h3>
         <p class="pdesc">Tableau de bord complet sous Qlik Sense pour piloter la supply chain en composants électriques aéronautiques : niveaux de stocks, taux de défauts, délais fournisseurs, performance par famille de composant.</p>
         <div class="ptags">
           <span class="ptag">Qlik Sense</span><span class="ptag">Modélisation BI</span>
           <span class="ptag">KPIs supply chain</span><span class="ptag">Data Quality</span>
         </div>
-        <a href="#" class="plink">GitHub (bientôt disponible) →</a>
+        <div class="proj-footer">
+          <a href="#" class="plink">GitHub (bientôt disponible) →</a>
+        </div>
       </div>
-      <div></div>
     </div>
 
-    <div class="proj-row">
-      <div class="pnum">04</div>
-      <div>
+    <!-- PROJET 04 -->
+    <div class="proj-card">
+      <!--
+        📌 ZONE IMAGE 04
+        Remplacez le bloc <div class="proj-img-placeholder">...</div>
+        par : <img src="assets/images/projet-sentinel.png" alt="Aperçu Sentinel-1">
+      -->
+      <div class="proj-img-wrap">
+        <div class="proj-img-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Insérer une image ici</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <div></div>
+          <div class="pnum">04</div>
+        </div>
         <h3 class="ptitle">Détection de changements spatiaux — Sentinel-1</h3>
-        <p class="pdesc">Création d'un outil de détection de zones endommagées par des bombardements. Outil précieux pour les acteurs de la logistique humanitaire. Pipeline de détection de changements spatiaux via séries temporelles radar. T-test pixel par pixel, agrégation sur grille, export CSV/raster.
-</p>
+        <p class="pdesc">Création d'un outil de détection de zones endommagées par des bombardements. Outil précieux pour les acteurs de la logistique humanitaire. Pipeline de détection de changements spatiaux via séries temporelles radar. T-test pixel par pixel, agrégation sur grille, export CSV/raster.</p>
         <div class="ptags">
           <span class="ptag">Google Earth Engine</span><span class="ptag">Sentinel-1 VV/VH</span>
           <span class="ptag">Python</span><span class="ptag">Statistiques spatiales</span><span class="ptag">SIG</span>
         </div>
-        <a href="#" class="plink">GitHub (bientôt disponible) →</a>
+        <div class="proj-footer">
+          <a href="#" class="plink">GitHub (bientôt disponible) →</a>
+        </div>
       </div>
-      <div></div>
     </div>
 
   </div>
@@ -414,7 +489,7 @@ footer span{color:rgba(255,255,255,.9);font-weight:500}
     </div>
     <div>
       <div class="cinfo-list">
-        <a href="tel:+33607020222" class="cinfo-row">
+        <a href="tel:+33753628646" class="cinfo-row">
           <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <div><div class="ci-lbl">Téléphone</div><div class="ci-v">07 53 62 86 46</div></div>
         </a>
@@ -428,14 +503,12 @@ footer span{color:rgba(255,255,255,.9);font-weight:500}
         </a>
         <a href="https://madoutk07.github.io/Mamadou/" target="_blank" class="cinfo-row">
           <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
-          <div><div class="ci-lbl">GitHub</div><div class="ci-v">Mamadou</div></div>
+          <div><div class="ci-lbl">GitHub</div><div class="ci-v">madoutk07</div></div>
         </a>
         <div class="cinfo-row" style="cursor:default">
           <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div><div class="ci-lbl">Localisation</div><div class="ci-v">France</div></div>
         </div>
-      </div>
-      
       </div>
     </div>
   </div>
