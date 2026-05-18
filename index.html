@@ -1,971 +1,460 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mamadou Alioune Diallo — Data Analyst & Data Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mamadou Diallo — Data Management & BI Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #0b0d11;
-    --bg2: #12151b;
-    --bg3: #1a1e28;
-    --border: rgba(255,255,255,0.07);
-    --border-hover: rgba(255,255,255,0.15);
-    --text: #e8eaf0;
-    --muted: #7a7f8e;
-    --accent: #00e5a0;
-    --accent2: #3d7fff;
-    --accent3: #ff6b6b;
-    --tag-bg: rgba(0,229,160,0.08);
-    --tag-color: #00e5a0;
-    --font-display: 'Syne', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-    --font-body: 'DM Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 15px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* GRID BACKGROUND */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(11,13,17,0.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-logo span { color: var(--accent); }
-
-  nav ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  nav ul a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    font-family: var(--font-mono);
-    letter-spacing: 0.05em;
-    transition: color 0.2s;
-  }
-
-  nav ul a:hover { color: var(--accent); }
-
-  .nav-cta {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--accent) !important;
-    border: 1px solid rgba(0,229,160,0.3);
-    padding: 0.4rem 1rem;
-    border-radius: 4px;
-    transition: background 0.2s !important;
-  }
-
-  .nav-cta:hover { background: rgba(0,229,160,0.1) !important; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 3rem 4rem;
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .hero-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 6rem);
-    font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-  }
-
-  .hero h1 .line2 { color: var(--accent); }
-
-  .hero-desc {
-    max-width: 560px;
-    color: var(--muted);
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #0b0d11;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 0.75rem 1.75rem;
-    border-radius: 4px;
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-
-  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
-
-  .btn-secondary {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    padding: 0.75rem 1.75rem;
-    border: 1px solid var(--border-hover);
-    border-radius: 4px;
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .btn-secondary:hover { color: var(--text); border-color: var(--text); }
-
-  /* STATS ROW */
-  .stats-row {
-    display: flex;
-    gap: 3rem;
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .stat-item {}
-
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
-
-  .stat-num span { color: var(--accent); }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--muted);
-    font-family: var(--font-mono);
-    letter-spacing: 0.05em;
-  }
-
-  /* SECTIONS */
-  section {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 6rem 3rem;
-  }
-
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 3rem;
-    line-height: 1.1;
-  }
-
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .about-text p {
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-    line-height: 1.9;
-  }
-
-  .about-text p strong { color: var(--text); font-weight: 500; }
-
-  .xp-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .xp-item {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 1.5rem;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--border);
-    align-items: start;
-  }
-
-  .xp-year {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    padding-top: 3px;
-    letter-spacing: 0.05em;
-  }
-
-  .xp-role {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-
-  .xp-company {
-    font-size: 12px;
-    color: var(--accent);
-    font-family: var(--font-mono);
-  }
-
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .skill-block {
-    background: var(--bg);
-    padding: 1.75rem;
-    transition: background 0.2s;
-  }
-
-  .skill-block:hover { background: var(--bg2); }
-
-  .skill-block-icon {
-    font-size: 20px;
-    margin-bottom: 1rem;
-    color: var(--accent);
-    font-family: var(--font-mono);
-    letter-spacing: -0.05em;
-  }
-
-  .skill-block-title {
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    color: var(--text);
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .skill-tag {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    padding: 3px 8px;
-    background: var(--tag-bg);
-    color: var(--tag-color);
-    border-radius: 3px;
-    letter-spacing: 0.03em;
-  }
-
-  .skill-tag.blue { background: rgba(61,127,255,0.1); color: #7aaaff; }
-  .skill-tag.red { background: rgba(255,107,107,0.1); color: #ff9090; }
-  .skill-tag.amber { background: rgba(255,185,0,0.1); color: #ffd666; }
-
-  /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .project-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 2rem;
-    transition: border-color 0.25s, transform 0.25s, background 0.25s;
-    cursor: default;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .project-card:hover {
-    border-color: var(--border-hover);
-    background: var(--bg3);
-    transform: translateY(-3px);
-  }
-
-  .project-card.featured {
-    border-color: rgba(0,229,160,0.25);
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  .project-card.featured:hover {
-    border-color: rgba(0,229,160,0.5);
-  }
-
-  .project-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .project-num {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-  }
-
-  .project-status {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-  }
-
-  .status-wip {
-    background: rgba(255,185,0,0.12);
-    color: #ffd666;
-    border: 1px solid rgba(255,185,0,0.2);
-  }
-
-  .project-title {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.3;
-  }
-
-  .project-desc {
-    color: var(--muted);
-    font-size: 13.5px;
-    line-height: 1.75;
-  }
-
-  .project-metrics {
-    display: flex;
-    gap: 1.5rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .metric {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .metric-val {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .metric-label {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: var(--font-mono);
-  }
-
-  .project-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .stack-tag {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    padding: 3px 8px;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    letter-spacing: 0.03em;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .project-card:hover .stack-tag {
-    color: var(--text);
-    border-color: var(--border-hover);
-  }
-
-  .project-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: auto;
-  }
-
-  .project-link {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--muted);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: color 0.2s;
-  }
-
-  .project-link:hover { color: var(--accent); }
-
-  .project-link svg {
-    width: 13px;
-    height: 13px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  /* CONTACT */
-  .contact-wrap {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-wrap::before {
-    content: '';
-    position: absolute;
-    top: -60px; left: 50%; transform: translateX(-50%);
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(0,229,160,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .contact-wrap h2 {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-  }
-
-  .contact-wrap p {
-    color: var(--muted);
-    max-width: 480px;
-    margin: 0 auto 2rem;
-  }
-
-  .contact-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .contact-chip {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0.6rem 1.25rem;
-    border: 1px solid var(--border-hover);
-    border-radius: 6px;
-    text-decoration: none;
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
-    background: var(--bg);
-  }
-
-  .contact-chip:hover {
-    color: var(--accent);
-    border-color: rgba(0,229,160,0.4);
-    background: rgba(0,229,160,0.05);
-  }
-
-  .contact-chip svg {
-    width: 14px; height: 14px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  /* FOOTER */
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 2rem 3rem;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.05em;
-  }
-
-  /* DIVIDER */
-  .section-divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
-  .hero h1 { animation: fadeUp 0.6s ease 0.1s both; }
-  .hero-desc { animation: fadeUp 0.6s ease 0.2s both; }
-  .hero-actions { animation: fadeUp 0.6s ease 0.3s both; }
-  .stats-row { animation: fadeUp 0.6s ease 0.4s both; }
-
-  /* CURSOR BLINK */
-  .cursor {
-    display: inline-block;
-    width: 3px;
-    height: 0.85em;
-    background: var(--accent);
-    margin-left: 4px;
-    vertical-align: middle;
-    animation: blink 1s step-end infinite;
-  }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f3;
+  --surface:#ffffff;
+  --surface2:#f0eeea;
+  --ink:#1a1814;
+  --ink2:#4a4740;
+  --ink3:#8a877f;
+  --accent:#1a3a5c;
+  --accent2:#c8922a;
+  --accent-light:#e8f0f8;
+  --border:#e2dfd8;
+  --border2:#ccc9c0;
+  --font-serif:'Playfair Display',Georgia,serif;
+  --font-sans:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,246,243,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 4rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-name{font-family:var(--font-serif);font-size:1rem;font-weight:600;color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:2rem;list-style:none}
+nav a{color:var(--ink3);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.03em;transition:color .2s}
+nav a:hover{color:var(--accent)}
+.nav-contact{color:var(--accent)!important;border:1px solid var(--accent);padding:.3rem .9rem;border-radius:2px}
+.nav-contact:hover{background:var(--accent-light)!important}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 400px;padding-top:60px;max-width:1200px;margin:0 auto}
+.hero-left{padding:6rem 4rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2);margin-bottom:2rem}
+.hero-tag::before{content:'';width:24px;height:1.5px;background:var(--accent2)}
+.hero h1{font-family:var(--font-serif);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;margin-bottom:1.5rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:15px;color:var(--ink2);max-width:500px;line-height:1.85;margin-bottom:2.5rem}
+.hero-sub strong{color:var(--ink);font-weight:600}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-dark{background:var(--accent);color:#fff;font-size:13px;font-weight:500;padding:.7rem 1.6rem;border-radius:2px;text-decoration:none;letter-spacing:.03em;transition:background .2s,transform .15s}
+.btn-dark:hover{background:#122d4a;transform:translateY(-1px)}
+.btn-outline{border:1px solid var(--border2);color:var(--ink2);font-size:13px;font-weight:500;padding:.7rem 1.6rem;border-radius:2px;text-decoration:none;letter-spacing:.03em;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+.hero-right{background:var(--accent);display:flex;flex-direction:column;justify-content:center;padding:6rem 2.5rem 4rem;position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;bottom:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.04)}
+.panel-label{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:2rem}
+.panel-kpis{display:flex;flex-direction:column;gap:1.25rem;position:relative;z-index:1}
+.kpi-div{width:100%;height:1px;background:rgba(255,255,255,.1)}
+.kpi-val{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1}
+.kpi-val span{font-size:1.1rem;font-weight:400;opacity:.55}
+.kpi-desc{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px}
+.avail{margin-top:2.5rem;display:flex;align-items:center;gap:.6rem;font-size:12px;color:rgba(255,255,255,.5);position:relative;z-index:1}
+.dot{width:7px;height:7px;border-radius:50%;background:#5de8a8;flex-shrink:0}
+
+.wrapper{max-width:1200px;margin:0 auto;padding:5rem 4rem}
+.s-eye{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2);display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem}
+.s-eye::before{content:'';width:20px;height:1.5px;background:var(--accent2)}
+.s-title{font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.15;margin-bottom:3rem}
+hr.div{border:none;border-top:1px solid var(--border);margin:0}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{color:var(--ink2);margin-bottom:1.25rem;line-height:1.9;font-size:14.5px}
+.about-text p strong{color:var(--ink);font-weight:600}
+.xp-list{display:flex;flex-direction:column}
+.xp-row{display:grid;grid-template-columns:110px 1fr;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid var(--border)}
+.xp-period{font-size:11px;color:var(--ink3);line-height:1.5;padding-top:2px;font-weight:500}
+.xp-role{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.xp-org{font-size:12px;color:var(--accent);font-weight:500}
+.xp-detail{font-size:12.5px;color:var(--ink3);margin-top:5px;line-height:1.6}
+
+.aero-banner{background:var(--accent);color:#fff;padding:3.5rem;border-radius:4px;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:0}
+.aero-banner h3{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;line-height:1.2;margin-bottom:1rem}
+.aero-banner p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.85}
+.aero-banner strong{color:#fff}
+.aero-caps{display:flex;flex-direction:column;gap:1rem}
+.aero-cap{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:1rem 1.25rem}
+.aero-cap-t{font-size:13px;font-weight:600;margin-bottom:4px}
+.aero-cap-d{font-size:12px;color:rgba(255,255,255,.58);line-height:1.6}
+
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.sk-card{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:1.75rem;transition:border-color .2s,box-shadow .2s}
+.sk-card:hover{border-color:var(--border2);box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.sk-lbl{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:.75rem}
+.sk-name{font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:11.5px;font-weight:500;padding:3px 9px;background:var(--surface2);color:var(--ink2);border-radius:2px;border:1px solid var(--border)}
+.tag.b{background:var(--accent-light);color:var(--accent);border-color:rgba(26,58,92,.15)}
+.tag.g{background:#fdf5e6;color:#7a5510;border-color:rgba(200,146,42,.2)}
+
+.proj-list{display:flex;flex-direction:column;gap:1.25rem}
+.proj-row{background:var(--surface);border:1px solid var(--border);border-radius:3px;display:grid;grid-template-columns:64px 1fr auto;gap:1.75rem;padding:1.75rem;align-items:start;transition:border-color .2s,transform .2s}
+.proj-row:hover{border-color:var(--accent);transform:translateX(3px)}
+.proj-row.feat{border-left:3px solid var(--accent2)}
+.pnum{font-family:var(--font-serif);font-size:2.2rem;font-weight:700;color:var(--border2);line-height:1}
+.ptitle{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.pdesc{font-size:13.5px;color:var(--ink2);line-height:1.75;margin-bottom:.9rem}
+.ptags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.75rem}
+.ptag{font-size:11px;padding:2px 8px;background:var(--surface2);color:var(--ink3);border-radius:2px;border:1px solid var(--border)}
+.plink{font-size:12px;font-weight:500;color:var(--accent);text-decoration:none;letter-spacing:.02em;display:inline-flex;align-items:center;gap:5px;transition:gap .2s}
+.plink:hover{gap:9px}
+.pmets{display:flex;flex-direction:column;gap:.9rem;align-items:flex-end}
+.mval{font-family:var(--font-serif);font-size:1.4rem;font-weight:700;color:var(--accent);line-height:1}
+.mkey{font-size:10px;color:var(--ink3);margin-top:2px}
+.badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-bottom:.5rem}
+.b-wip{background:#fef3cd;color:#7a5210;border:1px solid rgba(200,146,42,.2)}
+.b-aero{background:var(--accent-light);color:var(--accent);border:1px solid rgba(26,58,92,.18)}
+
+.contact-wrap{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-wrap h2{font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.1rem);font-weight:700;line-height:1.15;margin-bottom:1rem}
+.contact-wrap>div>p{font-size:14px;color:var(--ink2);line-height:1.85;margin-bottom:2rem}
+.cinfo-list{display:flex;flex-direction:column;gap:.65rem}
+.cinfo-row{display:flex;align-items:center;gap:1rem;padding:.85rem 1.1rem;background:var(--surface2);border:1px solid var(--border);border-radius:3px;text-decoration:none;color:var(--ink2);font-size:13px;transition:border-color .2s,color .2s,background .2s}
+.cinfo-row:hover{border-color:var(--accent);color:var(--accent);background:#fff}
+.ci-ico{width:30px;height:30px;border-radius:2px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-ico svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ci-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);font-weight:600}
+.ci-v{font-size:13px;font-weight:500;color:var(--ink)}
+.cert-box{background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:1.25rem;margin-top:1.5rem}
+.cert-lbl{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:.65rem}
+.cert-i{font-size:13px;font-weight:500;color:var(--ink);padding:.35rem 0;border-bottom:1px solid var(--border)}
+.cert-i:last-child{border-bottom:none;padding-bottom:0}
+.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1.25rem}
+.lang-pill{background:var(--surface2);border:1px solid var(--border);border-radius:2px;padding:.45rem .85rem}
+.lang-n{font-weight:600;font-size:12.5px;color:var(--ink)}
+.lang-l{color:var(--ink3);font-size:11px}
+
+footer{background:var(--accent);color:rgba(255,255,255,.55);text-align:center;padding:1.75rem 4rem;font-size:12px;letter-spacing:.03em}
+footer span{color:rgba(255,255,255,.9);font-weight:500}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero-left>*{animation:fadeUp .5s ease both}
+.hero-left>*:nth-child(1){animation-delay:.05s}
+.hero-left>*:nth-child(2){animation-delay:.12s}
+.hero-left>*:nth-child(3){animation-delay:.2s}
+.hero-left>*:nth-child(4){animation-delay:.27s}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">M<span>.</span>Diallo</a>
+  <a href="#" class="nav-name">Mamadou Diallo</a>
   <ul>
-    <li><a href="#about">À propos</a></li>
+    <li><a href="#about">Parcours</a></li>
+    <li><a href="#aero">Aéronautique</a></li>
     <li><a href="#skills">Compétences</a></li>
     <li><a href="#projects">Projets</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
+    <li><a href="#contact" class="nav-contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<div style="max-width:1100px; margin:0 auto; position:relative; z-index:1;">
-  <div class="hero">
-    <div class="hero-eyebrow">Disponible · Lyon, France</div>
-<h1>
-  Turning data into<br>
-  <span class="line2">operational intelligence</span>
-</h1>
-
-<p >
-  Mamadou Alioune Diallo · Data Analyst & Junior Data Engineer
-</p>
-
-   
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">Voir mes projets</a>
-      <a href="mailto:mdiallo7@outlook.fr" class="btn-secondary">Me contacter</a>
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Data Management & BI Analyst · Lyon</div>
+    <h1>Mamadou<br><em>Diallo</em></h1>
+    <p class="hero-sub">
+      Spécialiste data passionné par la <strong>transformation de données complexes</strong> en outils de pilotage opérationnels. Expériences terrain en contexte international, maîtrise des environnements BI, ETL, ML et SIG — avec un intérêt marqué pour les problématiques <strong>données industrielles & aéronautiques</strong>.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-dark">Voir mes projets</a>
+      <a href="#contact" class="btn-outline">Me contacter</a>
     </div>
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-num">5<span>+</span></div>
-        <div class="stat-label">Projets réalisés</div>
+  </div>
+  <div class="hero-right">
+    <div class="panel-label">Vue d'ensemble</div>
+    <div class="panel-kpis">
+      <div>
+        <div class="kpi-val">1 an<span>+</span></div>
+        <div class="kpi-desc">Data Analyst chez Handicap International</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">6<span>M</span></div>
-        <div class="stat-label">Lignes traitées (fraude)</div>
+      <div class="kpi-div"></div>
+      <div>
+        <div class="kpi-val">15<span>+ KPI</span></div>
+        <div class="kpi-desc">Tableaux de bord Power BI en production</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">4<span>+</span></div>
-        <div class="stat-label">Outils BI maîtrisés</div>
+      <div class="kpi-div"></div>
+      <div>
+        <div class="kpi-val">6M<span>+</span></div>
+        <div class="kpi-desc">Transactions — projet ML détection de fraude</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">3<span>+</span></div>
-        <div class="stat-label">Expériences pro</div>
+      <div class="kpi-div"></div>
+      <div>
+        <div class="kpi-val">M2</div>
+        <div class="kpi-desc">BI & Analytics — Univ. Lumière Lyon 2</div>
+      </div>
+    </div>
+    <div class="avail"><div class="dot"></div>Disponible · Ouvert aux opportunités</div>
+  </div>
+</div>
+
+<hr class="div"/>
+
+<div class="wrapper" id="about">
+  <div class="s-eye">Parcours</div>
+  <div class="s-title">Un profil data orienté<br>terrain et décision</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>En Master <strong>Business Intelligence & Analytics</strong> à l'Université Lumière Lyon 2, j'ai construit une expertise couvrant l'ensemble de la chaîne de valeur data : gouvernance, pipelines ETL, modélisation, reporting et machine learning.</p>
+      <p>Mon expérience chez <strong>Handicap International</strong> (1 an) m'a confronté à des données multi-sources, imparfaites, à fort enjeu opérationnel dans un contexte humanitaire international. J'ai appris à produire des analyses fiables sous contrainte et à les rendre accessibles aux équipes métiers non techniques.</p>
+      <p>Je maîtrise aussi bien les environnements <strong>ERP (SAP S4/HANA, Salesforce)</strong> que les outils de data quality (<strong>Talend TDQ</strong>, Power Query), et je travaille en méthode <strong>Agile SCRUM</strong> sur des projets data complexes.</p>
+    </div>
+    <div class="xp-list">
+      <div class="xp-row">
+        <div class="xp-period">Oct. 2024<br>Sept. 2025</div>
+        <div>
+          <div class="xp-role">Data Analyst</div>
+          <div class="xp-org">Handicap International — Lyon</div>
+          <div class="xp-detail">Pilotage opérationnel, 15+ KPI Power BI, indice de vulnérabilité logistique (7 sous-indicateurs), outil damage assessment Python + Google Earth Engine.</div>
+        </div>
+      </div>
+      <div class="xp-row">
+        <div class="xp-period">Avr. 2024<br>Juil. 2024</div>
+        <div>
+          <div class="xp-role">Analyste données logistiques</div>
+          <div class="xp-org">Handicap International — Lyon</div>
+          <div class="xp-detail">Bases de données spatiales, calcul de réseaux logistiques (ArcGIS/QGIS), contrôle qualité des flux de données.</div>
+        </div>
+      </div>
+      <div class="xp-row">
+        <div class="xp-period">Juil. 2023<br>Sept. 2023</div>
+        <div>
+          <div class="xp-role">Assistant Analyste de données</div>
+          <div class="xp-org">APIM — Nouakchott, Mauritanie</div>
+          <div class="xp-detail">Analyse des investissements, dashboards Tableau, conformité dossiers clients et business plans.</div>
+        </div>
+      </div>
+      <div class="xp-row">
+        <div class="xp-period">Avr. 2023<br>Juil. 2023</div>
+        <div>
+          <div class="xp-role">Développeur Full Stack</div>
+          <div class="xp-org">VAEG JURIDICA — Lyon</div>
+          <div class="xp-detail">Génération automatique de contrats (Laravel, Django, ReactJS), portail web avocats.</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="section-divider"></div>
+<hr class="div"/>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label">À propos</div>
-  <div class="section-title">Un profil data<br>full-stack</div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>
-        Étudiant en Master <strong>Business Intelligence & Analytics</strong> à l'Université Lumière Lyon 2, j'ai construit un profil polyvalent couvrant l'ensemble de la chaîne data — de la collecte à la visualisation.
-      </p>
-      <p>
-        Mes expériences chez <strong>Handicap International</strong>, l'<strong>APIM</strong> et le <strong>Ministère de la Transition Numérique de Mauritanie</strong> m'ont appris à travailler sur des problématiques métier concrètes avec des données imparfaites et des délais serrés.
-      </p>
-      <p>
-        Ce qui me distingue : une <strong>double compétence Data + SIG</strong> rare sur le marché, et une capacité à aller du pipeline ETL au dashboard opérationnel en passant par le modèle ML.
-      </p>
+<div class="wrapper" id="aero">
+  <div class="s-eye">Intérêt sectoriel</div>
+  <div class="s-title">Data pour l'industrie<br>aéronautique</div>
+  <div class="aero-banner">
+    <div>
+      <h3>La donnée au cœur<br>de la performance industrielle</h3>
+      <p>L'industrie aéronautique génère des volumes de données critiques — maintenance prédictive, supply chain, qualité des composants, performance opérationnelle. Ma double compétence <strong>BI + SIG + ML</strong> me permet d'adresser des problématiques transverses : dashboards de suivi de flotte, analyse de défauts, pipelines de qualité sur des référentiels complexes.</p>
     </div>
-    <div class="xp-list">
-      <div class="xp-item">
-        <div class="xp-year">Avr 2024 — Sept 2025</div>
-        <div>
-          <div class="xp-role">Data Analyst & BI/SIG</div>
-          <div class="xp-company">Handicap International</div>
-        </div>
+    <div class="aero-caps">
+      <div class="aero-cap">
+        <div class="aero-cap-t">Reporting & KPIs industriels</div>
+        <div class="aero-cap-d">Power BI, DAX, modèle en étoile — mise en place d'indicateurs fiables pour le suivi de chaînes de production et d'approvisionnement.</div>
       </div>
-      <div class="xp-item">
-        <div class="xp-year">Juil — Sept 2023</div>
-        <div>
-          <div class="xp-role">Data Marketing & Analyse</div>
-          <div class="xp-company">APIM — Mauritanie</div>
-        </div>
+      <div class="aero-cap">
+        <div class="aero-cap-t">Qualité & gouvernance des données</div>
+        <div class="aero-cap-d">Talend TDQ, Power Query, MDM — nettoyage, contrôle de cohérence et traçabilité sur des référentiels à forte contrainte qualité.</div>
       </div>
-      <div class="xp-item">
-        <div class="xp-year">Avr — Juil 2023</div>
-        <div>
-          <div class="xp-role">Développeur Full Stack</div>
-          <div class="xp-company">VAEG JURIDICA</div>
-        </div>
-      </div>
-      <div class="xp-item">
-        <div class="xp-year">Juil - Sept 2022</div>
-        <div>
-          <div class="xp-role">Consultant Data</div>
-          <div class="xp-company">Ministère Transition Numérique MR</div>
-        </div>
-      </div>
-    
-  </div>
-    <div class="xp-item">
-        <div class="xp-year">Nov 2021 - Avr 2022</div>
-        <div>
-          <div class="xp-role">Opérateur de Production IT</div>
-          <div class="xp-company">LM ECO Production</div>
-        </div>
-     </div>
+      <div class="aero-cap">
+        <div class="aero-cap-t">Analyse géospatiale & logistique</div>
+        <div class="aero-cap-d">QGIS, ArcGIS, Google Earth Engine — analyses spatiales appliquées à la logistique et aux opérations terrain, transposables aux zones de déploiement.</div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<div class="section-divider"></div>
+<hr class="div"/>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">Compétences</div>
-  <div class="section-title">Stack technique</div>
+<div class="wrapper" id="skills">
+  <div class="s-eye">Compétences</div>
+  <div class="s-title">Stack technique & expertises</div>
   <div class="skills-grid">
-    <div class="skill-block">
-      <div class="skill-block-icon">{ py }</div>
-      <div class="skill-block-title">Langages</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">R</span>
-        <span class="skill-tag">DAX</span>
-        <span class="skill-tag blue">JavaScript</span>
+    <div class="sk-card">
+      <div class="sk-lbl">BI & Visualisation</div>
+      <div class="sk-name">Reporting & Dashboards</div>
+      <div class="tags">
+        <span class="tag b">Power BI</span><span class="tag b">DAX</span>
+        <span class="tag">Qlik Sense</span><span class="tag">Tableau</span>
+        <span class="tag">Excel (VBA, TCD)</span><span class="tag">Plotly</span>
       </div>
     </div>
-    <div class="skill-block">
-      <div class="skill-block-icon">≈ ML</div>
-      <div class="skill-block-title">Machine Learning</div>
-      <div class="skill-tags">
-        <span class="skill-tag">XGBoost</span>
-        <span class="skill-tag">Random Forest</span>
-        <span class="skill-tag">SVM</span>
-        <span class="skill-tag">SMOTE</span>
-        <span class="skill-tag blue">scikit-learn</span>
+    <div class="sk-card">
+      <div class="sk-lbl">Data Engineering</div>
+      <div class="sk-name">Pipelines & Intégration</div>
+      <div class="tags">
+        <span class="tag b">Talend (TDQ)</span><span class="tag b">ETL / ELT</span>
+        <span class="tag">Azure Databricks</span><span class="tag">Spark</span>
+        <span class="tag">BigQuery</span><span class="tag">DuckDB</span>
       </div>
     </div>
-    <div class="skill-block">
-      <div class="skill-block-icon">⟶ ETL</div>
-      <div class="skill-block-title">Data Engineering</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Pipelines ETL/ELT</span>
-        <span class="skill-tag">Spark</span>
-        <span class="skill-tag">BigQuery</span>
-        <span class="skill-tag amber">DuckDB</span>
-        <span class="skill-tag blue">PostgreSQL</span>
+    <div class="sk-card">
+      <div class="sk-lbl">Machine Learning</div>
+      <div class="sk-name">Modélisation & IA</div>
+      <div class="tags">
+        <span class="tag b">Python</span><span class="tag b">scikit-learn</span>
+        <span class="tag">XGBoost</span><span class="tag">Random Forest</span>
+        <span class="tag">SMOTE</span><span class="tag">R</span>
       </div>
     </div>
-    <div class="skill-block">
-      <div class="skill-block-icon">▦ BI</div>
-      <div class="skill-block-title">BI & Visualisation</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">Qlik Sense</span>
-        <span class="skill-tag">Tableau</span>
-        <span class="skill-tag amber">Plotly</span>
+    <div class="sk-card">
+      <div class="sk-lbl">Bases de données</div>
+      <div class="sk-name">Requêtage & Stockage</div>
+      <div class="tags">
+        <span class="tag b">SQL avancé</span><span class="tag">PostgreSQL</span>
+        <span class="tag">MySQL</span><span class="tag">MongoDB</span>
+        <span class="tag">Neo4j</span><span class="tag g">SAP S4/HANA</span>
       </div>
     </div>
-    <div class="skill-block">
-      <div class="skill-block-icon">◎ GIS</div>
-      <div class="skill-block-title">Géospatial / SIG</div>
-      <div class="skill-tags">
-        <span class="skill-tag">QGIS</span>
-        <span class="skill-tag">Google Earth Engine</span>
-        <span class="skill-tag">ArcGIS</span>
-        <span class="skill-tag blue">R (sf, raster)</span>
+    <div class="sk-card">
+      <div class="sk-lbl">SIG & Géospatial</div>
+      <div class="sk-name">Analyse spatiale</div>
+      <div class="tags">
+        <span class="tag b">ArcGIS</span><span class="tag b">QGIS</span>
+        <span class="tag">Google Earth Engine</span>
+        <span class="tag">R (sf, raster)</span><span class="tag">Calcul de réseaux</span>
       </div>
     </div>
-    <div class="skill-block">
-      <div class="skill-block-icon">☁ DB</div>
-      <div class="skill-block-title">Bases de données</div>
-      <div class="skill-tags">
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">MySQL</span>
-        <span class="skill-tag blue">BigQuery</span>
-        <span class="skill-tag amber">DuckDB</span>
+    <div class="sk-card">
+      <div class="sk-lbl">Méthodes & CRM</div>
+      <div class="sk-name">Gestion & Outils</div>
+      <div class="tags">
+        <span class="tag g">Salesforce</span><span class="tag g">SAP</span>
+        <span class="tag">Agile SCRUM</span><span class="tag">MDM</span>
+        <span class="tag">Data Quality</span><span class="tag">GitHub</span>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<div class="section-divider"></div>
+<hr class="div"/>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">Projets</div>
-  <div class="section-title">Ce que j'ai construit</div>
-  <div class="projects-grid">
+<div class="wrapper" id="projects">
+  <div class="s-eye">Projets</div>
+  <div class="s-title">Réalisations & travaux</div>
+  <div class="proj-list">
 
-    <!-- Featured -->
-    <div class="project-card featured">
+    <div class="proj-row feat">
+      <div class="pnum">01</div>
       <div>
-        <div class="project-header">
-          <span class="project-num">01</span>
-          <span class="project-status status-wip">En cours</span>
+        <span class="badge b-wip">En cours</span>
+        <h3 class="ptitle">Détection de Fraude Bancaire — ML sur 6M+ transactions</h3>
+        <p class="pdesc">Pipeline ML complet sur un dataset fortement déséquilibré (&lt;1% de fraudes). Feature engineering, rééquilibrage SMOTE + Tomek Links, comparaison XGBoost / Random Forest / SVM, optimisation du seuil de décision pour maximiser le F1 sans exploser les faux positifs.</p>
+        <div class="ptags">
+          <span class="ptag">Python</span><span class="ptag">XGBoost</span><span class="ptag">SMOTE</span>
+          <span class="ptag">Tomek Links</span><span class="ptag">GridSearchCV</span><span class="ptag">scikit-learn</span>
         </div>
-        <h3 class="project-title" style="font-size:1.4rem; margin: 0.75rem 0;">Détection de Fraude Bancaire</h3>
-        <p class="project-desc">
-          Modèle ML sur un dataset de 6M+ transactions (moins de 1% de fraudes). Le défi principal : détecter un événement rare sans générer trop de faux positifs. Pipeline complet de feature engineering, rééquilibrage et tuning de seuil.
-        </p>
-        <div class="project-links" style="margin-top:1.5rem;">
-          <a href="#" class="project-link">
-            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            GitHub (bientôt)
-          </a>
-        </div>
+        <a href="#" class="plink">GitHub (bientôt disponible) →</a>
       </div>
+      <div class="pmets">
+        <div><div class="mval">6M+</div><div class="mkey">transactions</div></div>
+        <div><div class="mval">&lt;1%</div><div class="mkey">taux fraude</div></div>
+        <div><div class="mval">F1↑</div><div class="mkey">objectif clé</div></div>
+      </div>
+    </div>
+
+    <div class="proj-row">
+      <div class="pnum">02</div>
       <div>
-        <div class="project-metrics">
-          <div class="metric">
-            <span class="metric-val">6M+</span>
-            <span class="metric-label">transactions</span>
-          </div>
-          <div class="metric">
-            <span class="metric-val">&lt;1%</span>
-            <span class="metric-label">taux fraude</span>
-          </div>
-          <div class="metric">
-            <span class="metric-val">F1↑</span>
-            <span class="metric-label">objectif clé</span>
-          </div>
+        <span class="badge b-wip">En cours</span>
+        <h3 class="ptitle">Data Lake & Analyse du marché de l'emploi IT</h3>
+        <p class="pdesc">Architecture Data Lake Landing → Curated → Production pour analyser les offres Glassdoor/LinkedIn. Modèle en étoile, pipeline ETL Python, dashboard Power BI interactif sur les tendances et compétences recherchées.</p>
+        <div class="ptags">
+          <span class="ptag">Python</span><span class="ptag">BeautifulSoup</span>
+          <span class="ptag">ETL</span><span class="ptag">Modèle en étoile</span><span class="ptag">Power BI</span>
         </div>
-        <div class="project-stack" style="margin-top:1.25rem;">
-          <span class="stack-tag">Python</span>
-          <span class="stack-tag">XGBoost</span>
-          <span class="stack-tag">SMOTE</span>
-          <span class="stack-tag">Tomek Links</span>
-          <span class="stack-tag">GridSearchCV</span>
-          <span class="stack-tag">scikit-learn</span>
+        <a href="#" class="plink">GitHub (bientôt disponible) →</a>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="proj-row feat">
+      <div class="pnum">03</div>
+      <div>
+        <span class="badge b-aero">Aéronautique</span>
+        <h3 class="ptitle">BI Supply Chain — Composants électriques d'avions</h3>
+        <p class="pdesc">Tableau de bord complet sous Qlik Sense pour piloter la supply chain en composants électriques aéronautiques : niveaux de stocks, taux de défauts, délais fournisseurs, performance par famille de composant.</p>
+        <div class="ptags">
+          <span class="ptag">Qlik Sense</span><span class="ptag">Modélisation BI</span>
+          <span class="ptag">KPIs supply chain</span><span class="ptag">Data Quality</span>
         </div>
+        <a href="#" class="plink">GitHub (bientôt disponible) →</a>
       </div>
+      <div></div>
     </div>
 
-    <!-- Project 2 -->
-    <div class="project-card">
-      <div class="project-header">
-        <span class="project-num">02</span>
-        <span class="project-status status-wip">En cours</span>
+    <div class="proj-row">
+      <div class="pnum">04</div>
+      <div>
+        <h3 class="ptitle">Détection de changements spatiaux — Sentinel-1</h3>
+        <p class="pdesc">Pipeline de détection de changements spatiaux via séries temporelles radar. T-test pixel par pixel sur bandes VV/VH, agrégation sur grille régulière, export CSV/raster pour intégration SIG. Application au suivi de dommages terrain en zone de crise.</p>
+        <div class="ptags">
+          <span class="ptag">Google Earth Engine</span><span class="ptag">Sentinel-1 VV/VH</span>
+          <span class="ptag">Python</span><span class="ptag">Statistiques spatiales</span><span class="ptag">SIG</span>
+        </div>
+        <a href="#" class="plink">GitHub (bientôt disponible) →</a>
       </div>
-      <h3 class="project-title">Data Lake & Marché de l'emploi IT</h3>
-      <p class="project-desc">
-        Mini Data Lake pour analyser les offres Glassdoor/LinkedIn. Architecture Landing → Curated → Production, modèle en étoile et dashboard Power BI interactif.
-      </p>
-      <div class="project-stack" style="margin-top:auto; padding-top:1rem;">
-        <span class="stack-tag">Python</span>
-        <span class="stack-tag">BeautifulSoup</span>
-        <span class="stack-tag">Power BI</span>
-        <span class="stack-tag">ETL</span>
-      </div>
-    </div>
-
-    <!-- Project 3 -->
-    <div class="project-card">
-      <div class="project-header">
-        <span class="project-num">03</span>
-        <span class="project-status status-wip">En cours</span>
-      </div>
-      <h3 class="project-title">BI Aéronautique — Qlik Sense</h3>
-      <p class="project-desc">
-        Tableau de bord complet pour piloter la chaîne d'approvisionnement en composants électriques d'avions : stocks, défauts, délais, performance fournisseurs.
-      </p>
-      <div class="project-stack" style="margin-top:auto; padding-top:1rem;">
-        <span class="stack-tag">Qlik Sense</span>
-        <span class="stack-tag">Modélisation</span>
-        <span class="stack-tag">KPIs</span>
-        <span class="stack-tag">BI</span>
-      </div>
-    </div>
-
-    <!-- Project 4 -->
-    <div class="project-card">
-      <div class="project-header">
-        <span class="project-num">04</span>
-        <span class="project-status status-wip">En cours</span>
-      </div>
-      <h3 class="project-title">Pixel-Wise T-Test — Détection par imagerie satelitte</h3>
-      <p class="project-desc">
-        Création d'un outil de détection de zones endommagées par des bombardements. Outil précieux pour les acteurs de la logistique humanitaire. Pipeline de détection de changements spatiaux via séries temporelles radar. T-test pixel par pixel, agrégation sur grille, export CSV/raster.
-      </p>
-      <div class="project-stack" style="margin-top:auto; padding-top:1rem;">
-        <span class="stack-tag">Google Earth Engine</span>
-        <span class="stack-tag">Radar VV/VH</span>
-        <span class="stack-tag">Python</span>
-        <span class="stack-tag">SIG</span>
-      </div>
+      <div></div>
     </div>
 
   </div>
-</section>
+</div>
 
-<div class="section-divider"></div>
+<hr class="div"/>
 
-<!-- CONTACT -->
-<section id="contact">
+<div class="wrapper" id="contact">
   <div class="contact-wrap">
-    <h2>Travaillons ensemble</h2>
-    <p>Ouvert aux opportunités en Data Analytics, Data Engineering ou BI. N'hésitez pas à me contacter.</p>
-    <div class="contact-links">
-      <a href="mailto:mdiallo7@outlook.fr" class="contact-chip">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        mdiallo7@outlook.fr
-      </a>
-      <a href="https://www.linkedin.com/in/mamadou-alioune-diallo-7a9695259/" target="_blank" class="contact-chip">
-        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a>
-      <a href="https://madoutk07.github.io/Mamadou/" target="_blank" class="contact-chip">
-        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
-      </a>
+    <div>
+      <div class="s-eye" style="margin-bottom:.5rem">Contact</div>
+      <h2>Travaillons<br>ensemble</h2>
+      <p>Ouvert aux opportunités en Data Analytics, Data Management ou BI — en particulier dans des secteurs à forte exigence qualité données comme l'aéronautique, l'industrie ou l'humanitaire.</p>
+      <a href="mailto:mdiallo7@outlook.fr" class="btn-dark">Envoyer un message</a>
+    </div>
+    <div>
+      <div class="cinfo-list">
+        <a href="tel:+33607020222" class="cinfo-row">
+          <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="ci-lbl">Téléphone</div><div class="ci-v">06 07 02 02 22</div></div>
+        </a>
+        <a href="mailto:mdiallo7@outlook.fr" class="cinfo-row">
+          <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="ci-lbl">Email</div><div class="ci-v">mdiallo7@outlook.fr</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/mamadou-alioune-diallo-7a9695259/" target="_blank" class="cinfo-row">
+          <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="ci-lbl">LinkedIn</div><div class="ci-v">Mamadou Alioune Diallo</div></div>
+        </a>
+        <a href="https://github.com/madoutk07" target="_blank" class="cinfo-row">
+          <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+          <div><div class="ci-lbl">GitHub</div><div class="ci-v">madoutk07</div></div>
+        </a>
+        <div class="cinfo-row" style="cursor:default">
+          <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="ci-lbl">Localisation</div><div class="ci-v">Lyon, France</div></div>
+        </div>
+      </div>
+      <div class="cert-box">
+        <div class="cert-lbl">Certification & Langues</div>
+        <div class="cert-i">CS50's Harvard — Python</div>
+        <div class="lang-grid">
+          <div class="lang-pill"><div class="lang-n">Français</div><div class="lang-l">Bilingue</div></div>
+          <div class="lang-pill"><div class="lang-n">Anglais</div><div class="lang-l">B2 — Opérationnel</div></div>
+          <div class="lang-pill"><div class="lang-n">Espagnol</div><div class="lang-l">Notions</div></div>
+          <div class="lang-pill"><div class="lang-n">Arabe</div><div class="lang-l">Notions</div></div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <footer>
-  <span style="color: var(--accent)">M.Diallo</span> · Data Analyst & Junior Data Engineer · Lyon 2026
+  <span>Mamadou Diallo</span> · Data Management & BI Analyst · Lyon 2026
 </footer>
 
 </body>
